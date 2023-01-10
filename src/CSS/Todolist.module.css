@@ -1,0 +1,94 @@
+.TodoList {
+	border-radius: 15px;
+	padding: 15px;
+}
+
+.Todo {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	position: relative;
+	width: calc(40vw - 70px);
+	padding: 15px;
+	/* padding-r for two btn */
+	padding-right: 70px;
+	margin: 20px 0px;
+
+	font-size: 1.5rem;
+	border-radius: 15px;
+	background: white;
+	color: black;
+}
+
+/* for btn ok and del */
+/* 35px btn ok and del */
+.options {
+	display: inline-block;
+	position: absolute;
+	right: 5px;
+	color: rgba(87, 87, 87, 0.424);
+}
+.options > button {
+	width: 35px;
+	font-size: 1.5rem;
+	font-weight: 400;
+	background: none;
+}
+.TodoCompleted{
+	background: rgba(90, 86, 86, 0.469);
+	color: white;
+}
+
+.btnOk:hover {
+	color: green;
+}
+.btnDel:hover {
+	color: red;
+}
+
+.Todo:active {
+	background: coral;
+	color: white;
+}
+.voidList {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	height: 28rem;
+	font-size: 5rem;
+	color: lightgreen;
+}
+.Img {
+	width: 80px;
+	margin: 2rem;
+}
+
+.taskImg {
+	width: 3rem;
+	border-radius: 50%;
+}
+.todoICo {
+	color: cadetblue;
+	font-size: 2rem;
+	margin-right: 10px;
+}
+
+/* for btn clear all and completed tasks */
+.row {
+	display: flex;
+	justify-content: center;
+	margin: 10px auto;
+}
+.row > button {
+	font-size: 2rem;
+	height: 70px;
+	margin: 0px 10px;
+	border: 5px orange solid;
+	color: black;
+	background: white;
+	border-radius: 15px;
+}
+.row > button:hover {
+	color: red;
+}

@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+html {
+	background: rgb(2, 6, 48);
+	overflow-x: hidden;
+}
+.App {
+	width: 100vw;
+	height: 100vh;
+	color: white;
+	font-family: 'PT Sans', sans-serif;
+}
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-items: center;
+
+	max-width: 70vw;
+	height: 100vh;
+	margin: 0px auto;
+}
+.todo {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
