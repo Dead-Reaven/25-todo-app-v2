@@ -4,29 +4,46 @@ import { useState } from 'react';
 import './CSS/null.css';
 import './CSS/App.css';
 
+const initTodos = () => {
+	return {
+		data: [
+			{ task1: { text: '', completed: false } },
+			{ task2: { text: '', completed: false } },
+			{ task3: { text: '', completed: false } },
+			{ task4: { text: '', completed: false } },
+		],
+		getTotal() {
+			return this.data.length;
+		},
+		completedTodo: 0,
+	};
+};
 function App() {
-	const [taskList, setTaskList] = useState([]);
-	const [completedTasks, setCompletedTasks] = useState([]);
-	console.log(`Active:${taskList}\nCompleted:${completedTasks}`);
 
-	const pushTaskHandler = (text) => setTaskList([...taskList, text]);
+	// console.log(`Active:${taskList}\nCompleted:${completedTasks}`);
 
-	const deleteTaskHandler = (taskId) =>
-		setTaskList([...taskList.filter((_, index) => taskId !== index)]);
+	console.log(initTodos());
 
-	const clearAllHandler = () => {
-		setTaskList([]);
-		setCompletedTasks([]);
-	};
+	// const pushTaskHandler = (text) => setTaskList([...taskList, text]);
 
-	const completeTaskHandler = (taskId) => { //! logic bug
-		const task = taskList.filter((_, index) => taskId === index);
-		setCompletedTasks([...completedTasks, task]);
-		console.log(task);
-	};
-	const removeCompletedTaskHandler = (taskId)=> { //! logic bug
-		setCompletedTasks([...taskList.filter((_, index) => taskId !== index)]);
-	}
+	// const deleteTaskHandler = (taskId) =>
+	// 	setTaskList([...taskList.filter((_, index) => taskId !== index)]);
+
+	// const clearAllHandler = () => {
+	// 	setTaskList([]);
+	// 	setCompletedTasks([]);
+	// };
+
+	// const completeTaskHandler = (taskId) => {
+	// 	//! logic bug
+	// 	const task = taskList.filter((_, index) => taskId === index);
+	// 	setCompletedTasks([...completedTasks, task]);
+	// 	console.log(task);
+	// };
+	// const removeCompletedTaskHandler = (taskId) => {
+	// 	//! logic bug
+	// 	setCompletedTasks([...taskList.filter((_, index) => taskId !== index)]);
+	// };
 
 	return (
 		<div className='App '>
