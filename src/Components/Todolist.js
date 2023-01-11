@@ -2,19 +2,19 @@ import Todo from './Todo';
 import checkImg from '../IMG/check.ico';
 import style from '../CSS/Todolist.module.css';
 const Todolist = (props) => {
-	const { taskList, deleteTask, deleteAll, completeTask,removeCompletedTask } = props;
-	const todos = taskList.map((task, id) => (
+	const { state, deleteTask, setIsCompleted } = props;
+
+	const todos = state.data.map((item,index) => (
 		<Todo
-			data={task}
-			id={id}
+			data={item}
+			id={index}
 			deleteTask={deleteTask}
-			completeTask={completeTask}
-			removeCompletedTask={removeCompletedTask}
-			key={id}
+			setIsCompleted={setIsCompleted}
+			key={index}
 		/>
 	));
 
-	return !taskList.length ? ( // if list is empty output massage
+	return !state.data.length ? ( // if list is empty output massage
 		<h1 className={style.voidList}>
 			All tasks is done!
 			<img src={checkImg} className={style.Img} />
@@ -23,7 +23,7 @@ const Todolist = (props) => {
 		// else show todos
 		<div className={style.TodoList}>
 			<div className={style.row}>
-				<button onClick={deleteAll}>Clear all</button>
+				<button>Clear all</button>
 				<button>Clear complited tasks</button>
 			</div>
 			{todos}

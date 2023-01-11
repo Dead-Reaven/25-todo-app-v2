@@ -1,29 +1,27 @@
 import style from '../CSS/Todolist.module.css';
 import { RiTodoFill } from 'react-icons/ri';
 import { useState } from 'react';
-// import taskIco from '../IMG/task.jpg';
-const Todo = (props) => {
-	const { data, id, deleteTask, completeTask, removeCompletedTask } = props;
-	const [isTodoCompleted, setIsTodoCompleted] = useState(false);
 
-	const changeIsTodoCompleted = () => { //! logic bug
-		if (!isTodoCompleted) {
-			completeTask(id);
-			setIsTodoCompleted(true);
+const Todo = (props) => {
+	const { data, id, deleteTask, setIsCompleted } = props;
+	// const [todoIsCompleted, setTodoIsCompleted] = useState(data.isCompleted);
+	const changeIsTodoCompleted = () => {
+		if (data.isCompleted) { //! bug не меняется стиль при смене состояния App
+			// setTodoIsCompleted(false);
+			setIsCompleted(id, false);
 		} else {
-			removeCompletedTask(id);
-			setIsTodoCompleted(false);
+			// setTodoIsCompleted(true);
+			setIsCompleted(id, true);
 		}
 	};
-
 	return (
 		<div
-			className={
-				isTodoCompleted ? `${style.Todo} ${style.TodoCompleted}` : style.Todo
+			className={ //! bug не меняется стиль при смене состояния App
+				data.isCompleted ? `${style.Todo} ${style.isCompleted}` : style.Todo
 			}
 		>
 			<RiTodoFill className={style.todoICo} />
-			{data}
+			{data.text}
 			<div className={style.options}>
 				<button className={style.btnDel} onClick={() => deleteTask(id)}>
 					del
