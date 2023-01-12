@@ -24,7 +24,7 @@ const Todolist = (props) => {
 		// else show todos
 		<div className={style.TodoList}>
 			{todos}
-			<h1>Completed {state.completedTodo} todo </h1>
+			<h1>Completed {state.completedTodo} todo{state.completedTodo > 1 && 's'} </h1>
 		</div>
 	);
 };
