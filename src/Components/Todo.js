@@ -1,6 +1,5 @@
 import style from '../CSS/Todolist.module.css';
 import { RiTodoFill } from 'react-icons/ri';
-import { useState } from 'react';
 
 const Todo = (props) => {
 	const { data, id, deleteTask, setIsCompleted } = props;
@@ -8,7 +7,7 @@ const Todo = (props) => {
 	return (
 		<div
 			className={
-				`${style.Todo}` + ` ${data.isCompleted && style.TodoCompleted} `
+				`${style.Todo}` + ` ${data.isCompleted && style.inactiveItem} `
 			}
 		>
 			<RiTodoFill className={style.todoICo} />

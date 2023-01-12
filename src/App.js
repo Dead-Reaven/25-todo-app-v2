@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Form from './Components/Form';
 import Todolist from './Components/Todolist';
-import style from './CSS/Todolist.module.css';
 import './CSS/null.css';
 import './CSS/App.css';
 
@@ -26,7 +25,14 @@ function App() {
 
 	const deleteTaskHandler = (taskId) => {
 		const filteredState = initState(
-			[...state.data.filter((_, index) => index !== taskId)],
+			[
+				...state.data.filter((todo, index) => {
+					if (taskId !== index) return true;
+					else {
+						if (todo.isCompleted) state.completedTodo -= 1;
+					}
+				}),
+			],
 			state.completedTodo
 		);
 
@@ -37,7 +43,7 @@ function App() {
 
 	const clearCompletedTodos = () => {
 		const uncompletedTodos = [
-			...state.data.filter((todo) => !todo.isCompleted ),
+			...state.data.filter((todo) => !todo.isCompleted),
 		];
 		const filteredState = initState(uncompletedTodos, 0);
 		setState(filteredState);
@@ -45,18 +51,29 @@ function App() {
 
 	const setIsCompletedHandler = (todoId, bolean) => {
 		state.data[todoId].isCompleted = bolean;
-		setState(initState([...state.data], state.completedTodo));
+		setState(
+			initState(
+				[...state.data],
+				bolean ? state.completedTodo + 1 : state.completedTodo - 1
+			)
+		);
 	};
 
+	console.log(state);
 	return (
 		<div className='App '>
 			<div className='container'>
 				<div className='todo'>
 					<Form onSubmit={pushTaskHandler} />
 					{!!state.data.length && (
-						<div className={style.row}>
-							<button onClick={clearState}>Clear all</button>
-							<button onClick={clearCompletedTodos}>
+						<div>
+							<button onClick={clearState} className='btn'>
+								Clear all
+							</button>
+							<button
+								onClick={clearCompletedTodos}
+								className={`${!state.completedTodo ? 'inactiveItem' : 'btn'}`}
+							>
 								Clear completed tasks
 							</button>
 						</div>

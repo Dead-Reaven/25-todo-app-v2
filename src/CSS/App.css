@@ -25,3 +25,26 @@ html {
 	align-items: center;
 	justify-content: center;
 }
+
+/* for btn clear all and completed tasks */
+.btn  {
+	font-size: 2rem;
+	height: 70px;
+	margin: 0px 10px;
+	color: black;
+	background: white;
+	border-radius: 15px;
+	padding: 0px 15px;
+}
+.btn:hover {
+	color: red;
+}
+
+.inactiveItem{
+	background: rgba(90, 86, 86, 0.469);
+	font-size:2rem ;
+	color: white;
+	cursor: default;
+	background: none;
+	border: none;
+} 
