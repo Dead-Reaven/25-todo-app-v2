@@ -4,20 +4,11 @@ import { useState } from 'react';
 
 const Todo = (props) => {
 	const { data, id, deleteTask, setIsCompleted } = props;
-	// const [todoIsCompleted, setTodoIsCompleted] = useState(data.isCompleted);
-	const changeIsTodoCompleted = () => {
-		if (data.isCompleted) { //! bug не меняется стиль при смене состояния App
-			// setTodoIsCompleted(false);
-			setIsCompleted(id, false);
-		} else {
-			// setTodoIsCompleted(true);
-			setIsCompleted(id, true);
-		}
-	};
+
 	return (
 		<div
-			className={ //! bug не меняется стиль при смене состояния App
-				data.isCompleted ? `${style.Todo} ${style.isCompleted}` : style.Todo
+			className={
+				`${style.Todo}` + ` ${data.isCompleted && style.TodoCompleted} `
 			}
 		>
 			<RiTodoFill className={style.todoICo} />
@@ -26,7 +17,12 @@ const Todo = (props) => {
 				<button className={style.btnDel} onClick={() => deleteTask(id)}>
 					del
 				</button>
-				<button className={style.btnOk} onClick={changeIsTodoCompleted}>
+				<button
+					className={style.btnOk}
+					onClick={() => {
+						setIsCompleted(id, data.isCompleted ? false : true);
+					}}
+				>
 					ok
 				</button>
 			</div>

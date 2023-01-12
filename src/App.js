@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import Form from './Components/Form';
 import Todolist from './Components/Todolist';
-import { useState } from 'react';
+import style from './CSS/Todolist.module.css';
 import './CSS/null.css';
 import './CSS/App.css';
 
@@ -13,8 +14,6 @@ const initState = (data, completedTodo) => {
 
 function App() {
 	const [state, setState] = useState(initState([], 0));
-
-	// console.log(state);
 
 	const pushTaskHandler = (text) => {
 		const pushedState = initState(
@@ -34,9 +33,18 @@ function App() {
 		setState(filteredState);
 	};
 
+	const clearState = () => setState(initState([], 0));
+
+	const clearCompletedTodos = () => {
+		const uncompletedTodos = [
+			...state.data.filter((todo) => !todo.isCompleted ),
+		];
+		const filteredState = initState(uncompletedTodos, 0);
+		setState(filteredState);
+	};
+
 	const setIsCompletedHandler = (todoId, bolean) => {
-		// const isCompleted = state.data[todoId].isCompleted;
-		state.data[todoId].isCompleted = bolean; //isCompleted ? false : true;
+		state.data[todoId].isCompleted = bolean;
 		setState(initState([...state.data], state.completedTodo));
 	};
 
@@ -45,6 +53,14 @@ function App() {
 			<div className='container'>
 				<div className='todo'>
 					<Form onSubmit={pushTaskHandler} />
+					{!!state.data.length && (
+						<div className={style.row}>
+							<button onClick={clearState}>Clear all</button>
+							<button onClick={clearCompletedTodos}>
+								Clear completed tasks
+							</button>
+						</div>
+					)}
 					<Todolist
 						state={state}
 						deleteTask={deleteTaskHandler}

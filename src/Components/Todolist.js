@@ -4,7 +4,7 @@ import style from '../CSS/Todolist.module.css';
 const Todolist = (props) => {
 	const { state, deleteTask, setIsCompleted } = props;
 
-	const todos = state.data.map((item,index) => (
+	const todos = state.data.map((item, index) => (
 		<Todo
 			data={item}
 			id={index}
@@ -21,13 +21,7 @@ const Todolist = (props) => {
 		</h1>
 	) : (
 		// else show todos
-		<div className={style.TodoList}>
-			<div className={style.row}>
-				<button>Clear all</button>
-				<button>Clear complited tasks</button>
-			</div>
-			{todos}
-		</div>
+		<div className={style.TodoList}>{todos}</div>
 	);
 };
 
