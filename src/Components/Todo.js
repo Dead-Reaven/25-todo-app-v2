@@ -1,5 +1,8 @@
 import style from '../CSS/Todolist.module.css';
 import { RiTodoFill } from 'react-icons/ri';
+import { RiDeleteBin6Line } from 'react-icons/ri';
+import { AiOutlineCheckCircle } from 'react-icons/ai';
+import { ImCancelCircle } from 'react-icons/im';
 
 const Todo = (props) => {
 	const { todoState, deleteTask, setIsCompleted } = props;
@@ -12,21 +15,33 @@ const Todo = (props) => {
 			}
 		>
 			{/* output ico and todo`s text align left*/}
-			<RiTodoFill className={style.todoICo} /> 
+			<RiTodoFill className={style.todoICo} />
 			{todoState.text}
 			{/* output actions buttons ok and del align right*/}
 			<div className={style.options}>
-				<button className={style.btnDel} onClick={() => deleteTask(todoState.id)}>
-					del
-				</button>
-				<button
-					className={style.btnOk}
-					onClick={() => {
-						setIsCompleted(todoState.id, todoState.isCompleted ? false : true);
-					}}
-				>
-					ok
-				</button>
+				<RiDeleteBin6Line
+					title='delete todo'
+					className={style.btnDel}
+					onClick={() => deleteTask(todoState.id)}
+				/>
+
+				{todoState.isCompleted ? (
+					<ImCancelCircle
+						title='return todo'
+						className={style.btnCancel}
+						onClick={() => {
+							setIsCompleted(todoState.id);
+						}}
+					/>
+				) : (
+					<AiOutlineCheckCircle
+						title='complete todo!'
+						className={style.btnOk}
+						onClick={() => {
+							setIsCompleted(todoState.id);
+						}}
+					/>
+				)}
 			</div>
 		</div>
 	);

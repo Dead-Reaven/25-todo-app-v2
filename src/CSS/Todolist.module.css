@@ -9,10 +9,11 @@
 	align-items: center;
 	flex-wrap: wrap;
 	position: relative;
-	width: calc(40vw - 70px);
+	/* width: calc(40vw - 80px); */
+	max-width: 600px;
 	padding: 15px;
 	/* padding-r for two btn */
-	padding-right: 70px;
+	padding-right: 80px;
 	margin: 20px 0px;
 
 	font-size: 1.5rem;
@@ -20,6 +21,27 @@
 	background: white;
 	color: black;
 	transition: 0.3s;
+}
+
+@media (max-width: 1180px) {
+	.Todo {
+		width: calc(70vw - 70px);
+	}
+}
+@media (min-width: 768px) {
+	.Todo {
+		width: calc(80vw - 70px);
+	}
+}
+@media (max-width: 768px) {
+	.Todo {
+		width: calc(80vw - 70px);
+	}
+}
+@media (max-width: 500px) {
+	.Todo {
+		font-size: 1.3rem;
+	}
 }
 .Todo:hover {
 	transform: scale(1.1);
@@ -30,16 +52,18 @@
 .options {
 	display: inline-block;
 	position: absolute;
-	right: 5px;
+	right: 10px;
+	padding: 0px 0px 0px 15px;
 }
 .options > button {
-	width: 35px;
-	font-size: 1.5rem;
 	font-weight: 400;
 	background: none;
 }
-.btnOk , .btnDel  {
+.btnOk,
+.btnDel,
+.btnCancel {
 	color: black;
+	font-size: 2rem;
 	transition: transform 0.1s;
 }
 
@@ -53,6 +77,9 @@
 }
 .btnDel:hover {
 	color: red;
+	transform: scale(1.1);
+}
+.btnCancel:hover {
 	transform: scale(1.1);
 }
 
@@ -91,7 +118,7 @@
 	transition: 0.4s;
 }
 .inactiveItem:hover {
-	transform:scale(99%);
+	transform: scale(99%);
 }
 
 .inactiveItem > .options {

@@ -3,12 +3,14 @@ html {
 	background: rgb(2, 6, 48);
 	overflow-x: hidden;
 }
+
 .App {
 	width: 100vw;
 	height: 100vh;
 	color: white;
 	font-family: 'PT Sans', sans-serif;
 }
+
 .container {
 	display: flex;
 	flex-direction: column;
@@ -18,6 +20,16 @@ html {
 	max-width: 70vw;
 	height: 100vh;
 	margin: 0px auto;
+}
+@media (max-width: 1180px) {
+	.container {
+		max-width: 100vw;
+	}
+}
+@media (max-width: 768px) {
+	.container {
+		max-width: none;
+	}
 }
 .todo {
 	display: flex;

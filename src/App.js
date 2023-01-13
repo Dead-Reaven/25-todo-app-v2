@@ -19,7 +19,6 @@ function App() {
 		// store state in local storage
 		try {
 			const storageState = JSON.parse(window.localStorage.getItem('state'));
-			console.log(storageState, !!storageState.data.length);
 			if (storageState !== null) setState(storageState);
 		} catch {
 			setState(initState([], 0));
@@ -64,16 +63,18 @@ function App() {
 		setState(newState);
 	};
 
-	const setIsCompletedHandler = (todoId, isCompleted) => {
+	const setIsCompletedHandler = (todoId) => {
 		const changedTodo = state.data.map((todo) => {
-			if (todo.id === todoId) todo.isCompleted = isCompleted;
+			if (todo.id === todoId) {
+				todo.isCompleted
+					? (state.completedTodo -= 1)
+					: (state.completedTodo += 1);
+				return { ...todo, isCompleted: !todo.isCompleted };
+			}
 			return todo;
 		});
 
-		const newState = initState(
-			changedTodo,
-			isCompleted ? state.completedTodo + 1 : state.completedTodo - 1
-		);
+		const newState = initState(changedTodo, state.completedTodo);
 
 		setState(newState);
 	};
