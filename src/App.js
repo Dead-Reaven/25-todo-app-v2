@@ -38,10 +38,10 @@ function App() {
 		setState(filteredState);
 	};
 
-	const deleteTaskHandler = (taskId) => {
+	const deleteTaskHandler = (todoId) => {
 		const filteredTodos = [
 			...state.data.filter((todo) => {
-				if (taskId !== todo.id) return true;
+				if (todoId !== todo.id) return true;
 				else if (todo.isCompleted) state.completedTodo -= 1;
 			}),
 		];

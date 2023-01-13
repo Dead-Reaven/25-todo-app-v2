@@ -27,24 +27,30 @@ html {
 }
 
 /* for btn clear all and completed tasks */
-.btn  {
+.btn {
 	font-size: 2rem;
 	height: 70px;
 	margin: 0px 10px;
+	padding: 0px 15px;
 	color: black;
 	background: white;
 	border-radius: 15px;
-	padding: 0px 15px;
-}
-.btn:hover {
-	color: red;
+	transition: 0.3s;
 }
 
-.inactiveItem{
+.inactiveItem {
 	background: rgba(90, 86, 86, 0.469);
-	font-size:2rem ;
+	font-size: 2rem;
 	color: white;
 	cursor: default;
 	background: none;
 	border: none;
-} 
+	transition: 0.1s;
+}
+.inactiveItem:hover {
+	transform: scale(95%);
+}
+.btn:hover {
+	color: red;
+	transform: scale(115%);
+}

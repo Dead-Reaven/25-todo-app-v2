@@ -17,14 +17,16 @@ const Form = (props) => {
 			<h1 className={style.h1}>React todo app!</h1>
 			<input
 				className={style.input}
+				placeholder='Press enter to add new todo...'
 				type='text'
 				name='task'
 				value={todoText}
 				autoComplete='off'
 				onChange={(event) => setTodoText(event.target.value)}
 			/>
-			<br />
-			<input className={style.submit} type='submit' value='Save task' />
+			{/* {!!todoText.length && (
+				<input type='submit' className={style.submit} value='Start todo!' />
+			)} */}
 		</form>
 	);
 };
