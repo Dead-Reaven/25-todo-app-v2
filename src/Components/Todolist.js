@@ -5,13 +5,12 @@ import style from '../CSS/Todolist.module.css';
 const Todolist = (props) => {
 	const { state, deleteTask, setIsCompleted } = props;
 
-	const todos = state.data.map((todo, index) => (
+	const todos = state.data.map((todo) => (
 		<Todo
-			data={todo}
-			id={index}
+			todoState={todo}
 			deleteTask={deleteTask}
 			setIsCompleted={setIsCompleted}
-			key={index}
+			key={todo.id}
 		/>
 	));
 

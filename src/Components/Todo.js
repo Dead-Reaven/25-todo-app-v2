@@ -2,24 +2,27 @@ import style from '../CSS/Todolist.module.css';
 import { RiTodoFill } from 'react-icons/ri';
 
 const Todo = (props) => {
-	const { data, id, deleteTask, setIsCompleted } = props;
+	const { todoState, deleteTask, setIsCompleted } = props;
 
 	return (
 		<div
 			className={
-				`${style.Todo}` + ` ${data.isCompleted && style.inactiveItem} `
+				// check if this todo is competed optional change style for this element
+				`${style.Todo}` + ` ${todoState.isCompleted && style.inactiveItem} `
 			}
 		>
-			<RiTodoFill className={style.todoICo} />
-			{data.text}
+			{/* output ico and todo`s text align left*/}
+			<RiTodoFill className={style.todoICo} /> 
+			{todoState.text}
+			{/* output actions buttons ok and del align right*/}
 			<div className={style.options}>
-				<button className={style.btnDel} onClick={() => deleteTask(id)}>
+				<button className={style.btnDel} onClick={() => deleteTask(todoState.id)}>
 					del
 				</button>
 				<button
 					className={style.btnOk}
 					onClick={() => {
-						setIsCompleted(id, data.isCompleted ? false : true);
+						setIsCompleted(todoState.id, todoState.isCompleted ? false : true);
 					}}
 				>
 					ok
