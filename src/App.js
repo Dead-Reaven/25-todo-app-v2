@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Form from './Components/Form';
 import Todolist from './Components/Todolist';
 import './CSS/null.css';
@@ -14,6 +14,21 @@ const initState = (data, completedTodo) => {
 
 function App() {
 	const [state, setState] = useState(initState([], 0));
+
+	useEffect(() => {
+		// store state in local storage
+		try {
+			const storageState = JSON.parse(window.localStorage.getItem('state'));
+			console.log(storageState, !!storageState.data.length);
+			if (storageState !== null) setState(storageState);
+		} catch {
+			setState(initState([], 0));
+		}
+	}, []);
+
+	useEffect(() => {
+		window.localStorage.setItem('state', JSON.stringify(state));
+	}, [state]);
 
 	const clearState = () => {
 		const clearedState = initState([], 0);
@@ -63,7 +78,6 @@ function App() {
 		setState(newState);
 	};
 
-	console.log(state);
 	return (
 		<div className='App '>
 			<div className='container'>
