@@ -2,7 +2,7 @@ import style from '../CSS/Todolist.module.css';
 import { RiTodoFill } from 'react-icons/ri';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
-import { ImCancelCircle } from 'react-icons/im';
+import { TbArrowBackUp } from 'react-icons/tb';
 
 const Todo = (props) => {
 	const { todoState, deleteTask, setIsCompleted } = props;
@@ -26,7 +26,7 @@ const Todo = (props) => {
 				/>
 
 				{todoState.isCompleted ? (
-					<ImCancelCircle
+					<TbArrowBackUp
 						title='return todo'
 						className={style.btnCancel}
 						onClick={() => {
