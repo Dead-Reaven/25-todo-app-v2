@@ -85,7 +85,7 @@ function App() {
 				<div className='todo'>
 					<Form onSubmit={pushTodoHandler} />
 					{!!state.data.length && ( //if have not empty array
-						<div>
+						<div className='todo-actions'>
 							<button onClick={clearState} className='btn'>
 								Clear all
 							</button>

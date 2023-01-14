@@ -29,6 +29,7 @@ html {
 @media (max-width: 768px) {
 	.container {
 		max-width: none;
+		padding: 0px 15px;
 	}
 }
 .todo {
@@ -39,8 +40,11 @@ html {
 }
 
 /* for btn clear all and completed tasks */
-.btn {
+.todo-actions > * {
 	font-size: 2rem;
+}
+
+.btn {
 	height: 70px;
 	margin: 0px 10px;
 	padding: 0px 15px;
@@ -50,9 +54,22 @@ html {
 	transition: 0.3s;
 }
 
+@media (max-width: 500px) {
+	.todo-actions > * {
+		font-size: 5.5vw;
+		padding: 0px 10px;
+	}
+}
+
+@media (max-width: 450px) {
+	.todo-actions > * {
+		font-size: 5vw;
+		padding: 0px 10px;
+	}
+}
+
 .inactiveItem {
 	background: rgba(90, 86, 86, 0.469);
-	font-size: 2rem;
 	color: white;
 	cursor: default;
 	background: none;

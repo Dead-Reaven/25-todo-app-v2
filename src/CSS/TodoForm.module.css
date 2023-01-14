@@ -40,8 +40,46 @@
 }
 
 @media (max-width: 560px) {
+	.h1{
+		font-size: 4rem;
+	}
 	.input {
-		/* max-width: 85vw; */
-		/* margin: 15px 15px 30px 15px; */
+		width: 90%;
+		max-width: 400px;
+		margin: 0px 5px;
+	}
+	.formInput:hover {
+		transform: scale(110%);
+		font-size: 1.7rem;
+	}
+
+	.submit,.submitActive {
+		right: 0px;
+		font-size: 1.4rem;
+		color: black;
+	}
+}
+
+@media (max-width: 490px) {
+	.input {
+		width: 85%;
+		max-width: 400px;
+		margin: 0px 5px;
+	}
+	.submit,.submitActive {
+		right: 10px;
+	}
+}
+@media (max-width: 400px) {
+	.h1{
+		font-size: 3rem;
+	}
+	.input {
+		width: 85%;
+		max-width: 400px;
+		margin: 0px 5px;
+	}
+	.submit,.submitActive {
+		right: -5px;
 	}
 }
