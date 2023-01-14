@@ -91,18 +91,38 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	flex-wrap: wrap;
+	margin-top: 15vh;
 	font-size: 5rem;
-	color: lightgreen;
+	/* color: lightgreen; */
 }
+
+
+@media (max-width: 690px) {
+	.voidList {
+		font-size: 4rem;
+	}
+	.voidList > .Img  {	
+		width: 60px;
+	}
+}
+/* @media (max-width: 580px) {
+	.voidList > .Img  {	
+		width: 20vw;
+	}
+} */
+@media (max-width: 400px) {
+	.voidList {
+		font-size: 3rem;
+	}
+}
+
 .Img {
 	width: 80px;
 	margin: 2rem;
 }
 
-.taskImg {
-	width: 3rem;
-	border-radius: 50%;
-}
+
 .todoICo {
 	color: cadetblue;
 	font-size: 2rem;
