@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
 html {
-	background: url('./Sprinkle.svg') no-repeat rgba(22, 21, 30, 0.926);
-	background-size: cover;
+	background: url('./Sprinkle.svg') rgba(22, 21, 30, 0.926);
 	overflow-x: hidden;
 }
 
