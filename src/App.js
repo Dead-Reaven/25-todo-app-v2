@@ -5,34 +5,32 @@ import Todolist from './Components/Todolist';
 import './CSS/null.css';
 import './CSS/App.css';
 
-const initState = (data, completedTodo) => {
+const initState = () => {
 	return {
-		data, //array with objects
-		completedTodo, // number of completed todos
+		data: [], //array with objects
 	};
 };
 
 function App() {
-	const [state, setState] = useState(initState([], 0));
-
+	const [state, setState] = useState(initState());
+	console.log(state)
+	
 	useEffect(() => {
 		// store state in local storage
 		try {
 			const storageState = JSON.parse(window.localStorage.getItem('state'));
 			if (storageState !== null) setState(storageState);
 		} catch {
-			setState(initState([], 0));
+			setState(initState());
 		}
 	}, []);
 
+
 	useEffect(() => {
-		window.localStorage.setItem('state', JSON.stringify(state));
+		const stringifyedState = JSON.stringify(state);
+		window.localStorage.setItem('state', stringifyedState);
 	}, [state]);
 
-	const clearState = () => {
-		const clearedState = initState([], 0);
-		setState(clearedState);
-	};
 
 	const pushTodoHandler = (text) => {
 		const newTodo = {
@@ -40,43 +38,34 @@ function App() {
 			isCompleted: false,
 			id: uuidv4(),
 		};
-		const newState = initState([...state.data, newTodo], state.completedTodo);
-		setState(newState);
+		setState({ ...state, data: [...state.data, newTodo] });
 	};
 
 	const clearCompletedTodos = () => {
 		const uncompletedTodos = [
 			...state.data.filter((todo) => !todo.isCompleted),
 		];
-		const filteredState = initState(uncompletedTodos, 0);
-		setState(filteredState);
+		setState({ ...state, data: uncompletedTodos });
 	};
 
 	const deleteTaskHandler = (todoId) => {
 		const filteredTodos = [
 			...state.data.filter((todo) => {
 				if (todoId !== todo.id) return true;
-				else if (todo.isCompleted) state.completedTodo -= 1;
 			}),
 		];
-		const newState = initState(filteredTodos, state.completedTodo);
-		setState(newState);
+		setState({ ...state, data: filteredTodos });
 	};
 
 	const setIsCompletedHandler = (todoId) => {
 		const changedTodo = state.data.map((todo) => {
 			if (todo.id === todoId) {
-				todo.isCompleted
-					? (state.completedTodo -= 1)
-					: (state.completedTodo += 1);
 				return { ...todo, isCompleted: !todo.isCompleted };
 			}
 			return todo;
 		});
 
-		const newState = initState(changedTodo, state.completedTodo);
-
-		setState(newState);
+		setState({ ...state, data: changedTodo });
 	};
 
 	return (
@@ -86,7 +75,7 @@ function App() {
 					<Form onSubmit={pushTodoHandler} />
 					{!!state.data.length && ( //if have not empty array
 						<div className='todo-actions'>
-							<button onClick={clearState} className='btn'>
+							<button onClick={() => setState(initState())} className='btn'>
 								Clear all
 							</button>
 							<button
