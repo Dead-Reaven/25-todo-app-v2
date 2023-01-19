@@ -3,16 +3,9 @@ import style from '../CSS/Todolist.module.css';
 import '../CSS/checkAnimation.css';
 
 const Todolist = (props) => {
-	const { state, deleteTask, setIsCompleted } = props;
+	const { state, countCompletedTodos, deleteTask, setIsCompleted } = props;
 
-	const countCompletedTodos = () => {
-		if (!!state.data.length)
-			return state.data.reduce(
-				(acc, currentTodo) => (currentTodo.isCompleted ? acc + 1 : acc),
-				0
-			);
-		return 0;
-	};
+
 	const completedTodos = countCompletedTodos();
 	// console.log(completedTodos);
 	const todos = state.data.map((todo) => (

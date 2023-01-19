@@ -13,8 +13,8 @@ const initState = () => {
 
 function App() {
 	const [state, setState] = useState(initState());
-	console.log(state)
-	
+	console.log(state);
+
 	useEffect(() => {
 		// store state in local storage
 		try {
@@ -25,12 +25,19 @@ function App() {
 		}
 	}, []);
 
-
 	useEffect(() => {
 		const stringifyedState = JSON.stringify(state);
 		window.localStorage.setItem('state', stringifyedState);
 	}, [state]);
 
+	const countCompletedTodos = () => {
+		if (!!state.data.length)
+			return state.data.reduce(
+				(acc, currentTodo) => (currentTodo.isCompleted ? acc + 1 : acc),
+				0
+			);
+		return 0;
+	};
 
 	const pushTodoHandler = (text) => {
 		const newTodo = {
@@ -80,7 +87,7 @@ function App() {
 							</button>
 							<button
 								onClick={clearCompletedTodos}
-								className={`${!state.completedTodo ? 'inactiveItem' : 'btn'}`}
+								className={`${!countCompletedTodos() ? 'inactiveItem' : 'btn'}`}
 							>
 								Clear completed tasks
 							</button>
@@ -88,6 +95,7 @@ function App() {
 					)}
 					<Todolist
 						state={state}
+						countCompletedTodos={countCompletedTodos}
 						deleteTask={deleteTaskHandler}
 						setIsCompleted={setIsCompletedHandler}
 					/>
