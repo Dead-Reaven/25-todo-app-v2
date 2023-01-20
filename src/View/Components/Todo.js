@@ -12,7 +12,7 @@ const Todo = ({ todo }) => {
 		<div
 			className={
 				// check if this todo is competed optional change style for this element
-				`${style.Todo}` + ` ${todo.isCompleted && style.inactiveItem} `
+				style.Todo + ` ${todo.isCompleted && style.inactiveItem} `
 			}
 		>
 			{/* output ico and todo`s text align left*/}

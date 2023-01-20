@@ -21,11 +21,7 @@ const model = {
 	},
 
 	deleteTodo: (todoId) => {
-		const filteredTodos = [
-			...model.todos.filter((todo) => {
-				if (todoId !== todo.id) return true;
-			}),
-		];
+		const filteredTodos = [...model.todos.filter((todo) => todoId !== todo.id)];
 		model.setTodos(filteredTodos);
 	},
 
