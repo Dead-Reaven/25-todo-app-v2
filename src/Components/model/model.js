@@ -28,6 +28,7 @@ const model = {
 		];
 		model.setTodos(filteredTodos);
 	},
+
 	toggleIsCompleted: (todoId) => {
 		const changedTodo = model.todos.map((todo) => {
 			if (todo.id === todoId)
@@ -37,6 +38,7 @@ const model = {
 		});
 		model.setTodos(changedTodo);
 	},
+
 	countCompletedTodos: () => {
 		if (!!model.todos.length)
 			return model.todos.reduce(
@@ -45,6 +47,7 @@ const model = {
 			);
 		return 0;
 	},
+    
 	clearCompletedTodos: () => {
 		const uncompletedTodos = [
 			...model.todos.filter((todo) => !todo.isCompleted),
