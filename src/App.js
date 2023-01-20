@@ -2,6 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { useState, useEffect } from 'react';
 import Form from './Components/Form';
 import Todolist from './Components/Todolist';
+import ActionsButtons from './Components/ActionsButtons';
 import './CSS/null.css';
 import './CSS/App.css';
 
@@ -13,6 +14,7 @@ const initState = () => {
 
 function App() {
 	const [state, setState] = useState(initState());
+
 	console.log(state);
 
 	useEffect(() => {
@@ -80,18 +82,12 @@ function App() {
 			<div className='container'>
 				<div className='todo'>
 					<Form onSubmit={pushTodoHandler} />
-					{!!state.data.length && ( //if have not empty array
-						<div className='todo-actions'>
-							<button onClick={() => setState(initState())} className='btn'>
-								Clear all
-							</button>
-							<button
-								onClick={clearCompletedTodos}
-								className={`${!countCompletedTodos() ? 'inactiveItem' : 'btn'}`}
-							>
-								Clear completed tasks
-							</button>
-						</div>
+					{!!state.data.length && (
+						<ActionsButtons
+							onClickClear={() => setState(initState())}
+							onClickClearCompleted={clearCompletedTodos}
+							isActive={!!countCompletedTodos()}
+						/>
 					)}
 					<Todolist
 						state={state}
