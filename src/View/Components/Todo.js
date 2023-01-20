@@ -1,12 +1,13 @@
+import { useContext } from 'react';
+import controllerContext from '../../controller/context/controllerContext';
 import style from '../CSS/Todolist.module.css';
 import { RiTodoFill } from 'react-icons/ri';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 import { TbArrowBackUp } from 'react-icons/tb';
 
-const Todo = (props) => {
-	const { todo, deleteTodo, setIsCompleted } = props;
-
+const Todo = ({ todo }) => {
+	const { deleteTodo, toggleIsCompleted } = useContext(controllerContext);
 	return (
 		<div
 			className={
@@ -30,7 +31,7 @@ const Todo = (props) => {
 						title='return todo'
 						className={style.btnCancel}
 						onClick={() => {
-							setIsCompleted(todo.id);
+							toggleIsCompleted(todo.id);
 						}}
 					/>
 				) : (
@@ -38,7 +39,7 @@ const Todo = (props) => {
 						title='complete todo!'
 						className={style.btnOk}
 						onClick={() => {
-							setIsCompleted(todo.id);
+							toggleIsCompleted(todo.id);
 						}}
 					/>
 				)}

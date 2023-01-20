@@ -1,15 +1,15 @@
+import useTodos from './hooks/useTodos';
 import { v4 as uuidv4 } from 'uuid';
-import useTodos from '../hooks/useTodos';
 
 const model = {
-	InitTodos: () => {
+	InitState: () => {
 		const { todos, setTodos } = useTodos();
 		model.todos = todos;
 		model.setTodos = setTodos;
 	},
 
-	todos: null,
-	setTodos: null,
+	todos: [],
+	setTodos: () => {},
 
 	pushTodo: (text) => {
 		const newTodo = {
@@ -47,7 +47,7 @@ const model = {
 			);
 		return 0;
 	},
-    
+
 	clearCompletedTodos: () => {
 		const uncompletedTodos = [
 			...model.todos.filter((todo) => !todo.isCompleted),

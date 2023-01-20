@@ -1,34 +1,15 @@
-import model from './Components/model/model';
-import Form from './Components/Form';
-import Todolist from './Components/Todolist';
-import ActionsButtons from './Components/ActionsButtons';
-import './CSS/null.css';
-import './CSS/App.css';
+import model from './model/model';
+import View from './View/View.jsx';
+import controllerContext from './controller/context/controllerContext';
+import controller from './controller/controller';
 
 function App() {
-	model.InitTodos();
+	model.InitState();
 
 	return (
-		<div className='App '>
-			<div className='container'>
-				<div className='todo'>
-					<Form onSubmit={model.pushTodo} />
-					{!!model.todos.length && (
-						<ActionsButtons
-							onClickClear={() => model.setTodos([])}
-							onClickClearCompleted={model.clearCompletedTodos}
-							isActive={!!model.countCompletedTodos()}
-						/>
-					)}
-					<Todolist
-						todos={model.todos}
-						countCompletedTodos={model.countCompletedTodos}
-						deleteTodo={model.deleteTodo}
-						setIsCompleted={model.toggleIsCompleted}
-					/>
-				</div>
-			</div>
-		</div>
+		<controllerContext.Provider value={controller}>
+			<View todos={model.todos} />;
+		</controllerContext.Provider>
 	);
 }
 
