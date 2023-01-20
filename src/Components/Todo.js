@@ -5,32 +5,32 @@ import { AiOutlineCheckCircle } from 'react-icons/ai';
 import { TbArrowBackUp } from 'react-icons/tb';
 
 const Todo = (props) => {
-	const { todoState, deleteTask, setIsCompleted } = props;
+	const { todo, deleteTodo, setIsCompleted } = props;
 
 	return (
 		<div
 			className={
 				// check if this todo is competed optional change style for this element
-				`${style.Todo}` + ` ${todoState.isCompleted && style.inactiveItem} `
+				`${style.Todo}` + ` ${todo.isCompleted && style.inactiveItem} `
 			}
 		>
 			{/* output ico and todo`s text align left*/}
 			<RiTodoFill className={style.todoICo} />
-			{todoState.text}
+			{todo.text}
 			{/* output actions buttons ok and del align right*/}
 			<div className={style.options}>
 				<RiDeleteBin6Line
 					title='delete todo'
 					className={style.btnDel}
-					onClick={() => deleteTask(todoState.id)}
+					onClick={() => deleteTodo(todo.id)}
 				/>
 
-				{todoState.isCompleted ? (
+				{todo.isCompleted ? (
 					<TbArrowBackUp
 						title='return todo'
 						className={style.btnCancel}
 						onClick={() => {
-							setIsCompleted(todoState.id);
+							setIsCompleted(todo.id);
 						}}
 					/>
 				) : (
@@ -38,7 +38,7 @@ const Todo = (props) => {
 						title='complete todo!'
 						className={style.btnOk}
 						onClick={() => {
-							setIsCompleted(todoState.id);
+							setIsCompleted(todo.id);
 						}}
 					/>
 				)}

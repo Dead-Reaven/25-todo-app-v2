@@ -3,21 +3,19 @@ import style from '../CSS/Todolist.module.css';
 import '../CSS/checkAnimation.css';
 
 const Todolist = (props) => {
-	const { state, countCompletedTodos, deleteTask, setIsCompleted } = props;
+	const { todos, countCompletedTodos, deleteTodo, setIsCompleted } = props;
 
-
-	const completedTodos = countCompletedTodos();
-	// console.log(completedTodos);
-	const todos = state.data.map((todo) => (
+	const todosComponents = todos.map((todo) => (
 		<Todo
-			todoState={todo}
-			deleteTask={deleteTask}
+			todo={todo}
+			deleteTodo={deleteTodo}
 			setIsCompleted={setIsCompleted}
 			key={todo.id}
 		/>
 	));
+	const completedTodos = countCompletedTodos();
 
-	return !state.data.length ? ( // if list is empty output massage
+	return !todos.length ? ( // if list is empty output massage
 		<h1 className={style.voidList}>
 			All tasks is done!
 			<div className='SucessContainer'>
@@ -32,7 +30,7 @@ const Todolist = (props) => {
 	) : (
 		// else show todos
 		<div className={style.TodoList}>
-			{todos}
+			{todosComponents}
 			<h1>
 				Completed
 				{completedTodos > 1
