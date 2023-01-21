@@ -94,26 +94,15 @@
 	flex-wrap: wrap;
 	margin-top: 15vh;
 	font-size: 5rem;
-	/* color: lightgreen; */
 }
 
 
 @media (max-width: 690px) {
 	.voidList {
-		font-size: 4rem;
+		font-size: 10vw;
 	}
 	.voidList > .Img  {	
 		width: 60px;
-	}
-}
-/* @media (max-width: 580px) {
-	.voidList > .Img  {	
-		width: 20vw;
-	}
-} */
-@media (max-width: 400px) {
-	.voidList {
-		font-size: 3rem;
 	}
 }
 

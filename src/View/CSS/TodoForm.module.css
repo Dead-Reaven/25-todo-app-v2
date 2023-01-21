@@ -23,7 +23,8 @@
 	border-radius: 5px;
 }
 
-.submit,.submitActive {
+.submit,
+.submitActive {
 	position: absolute;
 	top: 50%;
 	transform: translate(-50%, -50%);
@@ -39,47 +40,39 @@
 	color: red;
 }
 
+
 @media (max-width: 560px) {
-	.h1{
+	.h1 {
 		font-size: 4rem;
 	}
 	.input {
-		width: 90%;
-		max-width: 400px;
-		margin: 0px 5px;
-	}
-	.formInput:hover {
-		transform: scale(110%);
-		font-size: 1.7rem;
-	}
-
-	.submit,.submitActive {
-		right: 0px;
-		font-size: 1.4rem;
-		color: black;
-	}
-}
-
-@media (max-width: 490px) {
-	.input {
 		width: 85%;
 		max-width: 400px;
 		margin: 0px 5px;
 	}
-	.submit,.submitActive {
+	.submit,
+	.submitActive {
 		right: 10px;
 	}
 }
-@media (max-width: 400px) {
-	.h1{
-		font-size: 3rem;
-	}
+@media (min-width: 250px) and (max-width: 400px) {
+
 	.input {
-		width: 85%;
-		max-width: 400px;
-		margin: 0px 5px;
+		width: 70vw;
+		font-size: 1.3rem;
 	}
-	.submit,.submitActive {
-		right: -5px;
+
+	.submit,
+	.submitActive {
+		top: 15px;
 	}
+}
+@media (min-width: 0px) and (max-width: 560px) {
+	.h1 {
+		font-size: 10vw;
+	}
+	.formInput:hover {
+		transform: none;
+	}
+	
 }
