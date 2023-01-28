@@ -10,6 +10,7 @@ const Todo = ({ todo }) => {
 	const { deleteTodo, toggleIsCompleted } = useContext(controllerContext);
 	return (
 		<div
+			data-testid='todo'
 			className={
 				// check if this todo is competed optional change style for this element
 				style.Todo + ` ${todo.isCompleted && style.inactiveItem} `

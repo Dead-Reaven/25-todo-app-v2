@@ -16,7 +16,7 @@ const Todolist = ({ todos }) => {
 	// if list is empty output massage
 	if (!todos.length)
 		return (
-			<h1 className={style.voidList}>
+			<h1 className={style.voidList} data-testid='empty list'>
 				All tasks is done!
 				<div className='SucessContainer'>
 					<div className='w3-modal-icon w3-modal-success animate'>
@@ -30,7 +30,7 @@ const Todolist = ({ todos }) => {
 		);
 
 	return (
-		<div className={style.TodoList}>
+		<div className={style.TodoList}  data-testid='todo list'>
 			{todosComponents}
 			<h1>
 				Completed

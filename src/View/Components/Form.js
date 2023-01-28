@@ -10,6 +10,7 @@ const Form = () => {
 	return (
 		<form
 			className={style.Form}
+			data-testid='form'
 			onSubmit={(event) => {
 				event.preventDefault();
 
@@ -27,9 +28,10 @@ const Form = () => {
 					type='text'
 					value={todoText}
 					autoComplete='off'
+					data-testid='input text'
 					onChange={(event) => setTodoText(event.target.value)}
 				/>
-				<button type='submit'>
+				<button type='submit' data-testid='btn submit'>
 					<IoIosSend
 						className={`${!!todoText ? style.submitActive : style.submit}`}
 					/>
