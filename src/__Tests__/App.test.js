@@ -71,7 +71,7 @@ describe('Events', () => {
 		test('It should delete todo on click wastebasket button ', () => {
 			setup();
 			//after submits we have 4 todos
-			const deleteTodoButtons = screen.getAllByTitle('delete todo');
+			const deleteTodoButtons = screen.getAllByTestId('btn-del-todo');
 			expect(screen.getAllByTestId('todo')).not.toBeNull();
 			deleteTodoButtons.forEach((btn) => fireEvent.click(btn));
 
@@ -83,11 +83,12 @@ describe('Events', () => {
 			submitTimes(4);
 
 			screen
-				.getAllByTitle('complete todo!')
+				.getAllByTestId('btn-complete-todo')
 				.forEach((btn) => fireEvent.click(btn));
 
-			expect(screen.queryAllByTitle('complete todo!').length).toBe(0);
-			const returnTodoButtons = screen.getAllByTitle('return todo');
+			expect(screen.queryAllByTestId('completed-todo').length).toBe(4);
+
+			const returnTodoButtons = screen.getAllByTestId('btn-return-todo');
 
 			expect(returnTodoButtons.length).toBe(4);
 			expect(screen.getByText(/completed 4 todos/i)).toBeInTheDocument();
@@ -99,21 +100,26 @@ describe('Events', () => {
 			fireEvent.click(returnTodoButtons[2]);
 			expect(screen.getByText(/completed 1 todo/i)).toBeInTheDocument();
 
-			expect(screen.getAllByTitle('return todo').length).toBe(1);
-			expect(screen.getAllByTitle('complete todo!').length).toBe(3);
+			expect(screen.getAllByTestId('btn-return-todo').length).toBe(1);
+			expect(screen.getAllByTestId('btn-complete-todo').length).toBe(3);
 		});
 
 		test('It should click on "Clear uncompleted todos" button', () => {
 			setup();
-			expect(screen.getAllByTestId('todo').length).toBe(4);
+			expect(screen.getAllByTestId('todo').length).toBe(3);
+			expect(screen.queryAllByTestId('completed-todo').length).toBe(1);
+
 			fireEvent.click(screen.getByTestId('clear completed'));
+
+			expect(screen.queryAllByTestId('completed-todo').length).toBe(0);
 			expect(screen.getAllByTestId('todo').length).toBe(3);
 		});
+
 		test('it should click on "Clear all" button', () => {
 			setup();
-			expect(screen.getAllByTestId('todo').length).toBe(3);
 			fireEvent.click(screen.getByTestId('clear all'));
 			expect(screen.queryAllByTestId('todo').length).toBe(0);
+			expect(screen.getByTestId('empty list'));
 		});
 	});
 });

@@ -11,16 +11,12 @@ function ActionsButtons() {
 	} = useContext(controllerContext);
 	if (isShowActionButtons())
 		return (
-			<div className='todo-actions'>
-				<button
-					className='btn'
-					onClick={clearTodos}
-					data-testid='clear all'
-				>
+			<div>
+				<button onClick={clearTodos} data-testid='clear all'>
 					Clear all
 				</button>
 				<button
-					className={`${!!countCompletedTodos() ? 'btn' : 'inactiveItem'}`}
+					className={`${!!countCompletedTodos() ? '' : ''}`}
 					onClick={clearCompleted}
 					data-testid='clear completed'
 				>

@@ -1,7 +1,5 @@
 import { useState, useContext } from 'react';
 import controllerContext from '../../controller/context/controllerContext';
-import { IoIosSend } from 'react-icons/io';
-import style from '../CSS/TodoForm.module.css';
 
 const Form = () => {
 	const { onSubmitForm } = useContext(controllerContext);
@@ -9,7 +7,6 @@ const Form = () => {
 
 	return (
 		<form
-			className={style.Form}
 			data-testid='form'
 			onSubmit={(event) => {
 				event.preventDefault();
@@ -20,10 +17,8 @@ const Form = () => {
 				}
 			}}
 		>
-			<h1 className={style.h1}>React todo app!</h1>
-			<div className={style.formInput}>
+			<div>
 				<input
-					className={style.input}
 					placeholder='Press enter to add new todo...'
 					type='text'
 					value={todoText}
@@ -31,10 +26,9 @@ const Form = () => {
 					data-testid='input text'
 					onChange={(event) => setTodoText(event.target.value)}
 				/>
+
 				<button type='submit' data-testid='btn submit'>
-					<IoIosSend
-						className={`${!!todoText ? style.submitActive : style.submit}`}
-					/>
+					Submit
 				</button>
 			</div>
 		</form>

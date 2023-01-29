@@ -7,12 +7,17 @@ import './CSS/App.css';
 function View({ todos }) {
 	return (
 		<div className='App'>
-			<div className='container'>
-				<div className='todo'>
-					<Form />
-					<ActionsButtons />
-					<Todolist todos={todos} />
+			<nav>
+				<div className='nav__container'>
+					<a href='#'>My projects</a>
+					<a href='#'>My Todos</a>
+					<a href='#'>My profile</a>
 				</div>
+			</nav>
+			<div className='container__todos'>
+				{/* <Form /> */}
+				{/* <ActionsButtons /> */}
+				<Todolist todos={todos} />
 			</div>
 		</div>
 	);
