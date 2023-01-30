@@ -1,24 +1,28 @@
 import Form from './Components/Form';
 import Todolist from './Components/Todolist';
 import ActionsButtons from './Components/ActionsButtons';
+
 import './CSS/null.css';
 import './CSS/App.css';
+import './CSS/nav.css';
+import './CSS/scroll-bar.css';
 
 function View({ todos }) {
 	return (
 		<div className='App'>
-			<nav>
-				<div className='nav__container'>
-					<a href='#'>My projects</a>
-					<a href='#'>My Todos</a>
-					<a href='#'>My profile</a>
+			<header>
+				<nav className='shadow'>
+					<div className='content nav__container'>
+						<ActionsButtons />
+					</div>
+				</nav>
+			</header>
+			<main>
+				<div className='content'>
+					<Todolist todos={todos} />
+					<Form />
 				</div>
-			</nav>
-			<div className='container__todos'>
-				{/* <Form /> */}
-				{/* <ActionsButtons /> */}
-				<Todolist todos={todos} />
-			</div>
+			</main>
 		</div>
 	);
 }
