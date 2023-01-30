@@ -1,10 +1,9 @@
 import { useContext } from 'react';
 import controllerContext from '../../controller/context/controllerContext';
-import { BiCheck } from 'react-icons/bi';
-import { RxCross2 } from 'react-icons/rx';
+import { BiArrowBack, BiCheck } from 'react-icons/bi';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { BsCheck2 } from 'react-icons/bs';
-import {RxPencil1} from 'react-icons/rx' 
+// import {RxPencil1} from 'react-icons/rx' 
 
 const Todo = ({ todo }) => {
 	const { text, isCompleted, id, timeStart, timeEnd } = todo;
@@ -24,7 +23,7 @@ const Todo = ({ todo }) => {
 						onClick={() => toggleIsCompleted(id)}
 					>
 						{isCompleted ? (
-							<RxCross2 className='todo__header__btn-return' />
+							<BiArrowBack className='todo__header__btn-return' />
 						) : (
 							<BiCheck className='todo__header__btn-done' />
 						)}

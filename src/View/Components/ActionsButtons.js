@@ -11,19 +11,36 @@ function ActionsButtons() {
 		clearCompleted,
 		countCompletedTodos,
 	} = useContext(controllerContext);
+
+	const completedTodos = countCompletedTodos();
+
 	if (isShowActionButtons())
 		return (
 			<div className='actions-buttons'>
-				<button onClick={clearTodos} data-testid='clear all' title='Clear all' className='' >
+				<button
+					onClick={clearTodos}
+					data-testid='clear all'
+					title='Clear all'
+					className='blue-gradient'
+				>
 					<RxUpdate />
 				</button>
 				<button
-					className={`${!!countCompletedTodos() ? '' : ''}`}
+					className={`${
+						!completedTodos ? 'inactive blue-gradient' : 'blue-gradient'
+					} `}
 					onClick={clearCompleted}
 					data-testid='clear completed'
 					title='Clear completed'
 				>
 					<VscChecklist />
+					<span>
+						{completedTodos
+							? `Completed ${completedTodos} todo${
+									completedTodos > 1 ? 's' : ''
+							  }`
+							: ``}
+					</span>
 				</button>
 			</div>
 		);

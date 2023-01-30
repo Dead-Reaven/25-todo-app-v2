@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
+import { TbBrandTelegram } from 'react-icons/tb';
 import controllerContext from '../../controller/context/controllerContext';
-
 const Form = () => {
 	const { onSubmitForm } = useContext(controllerContext);
 	const [todoText, setTodoText] = useState('');
@@ -8,6 +8,7 @@ const Form = () => {
 	return (
 		<form
 			data-testid='form'
+			className='form'
 			onSubmit={(event) => {
 				event.preventDefault();
 
@@ -17,9 +18,10 @@ const Form = () => {
 				}
 			}}
 		>
-			<div>
+			<div className='input__container blue-gradient '>
 				<input
 					placeholder='Press enter to add new todo...'
+					className='  input__container__text-input'
 					type='text'
 					value={todoText}
 					autoComplete='off'
@@ -27,8 +29,13 @@ const Form = () => {
 					onChange={(event) => setTodoText(event.target.value)}
 				/>
 
-				<button type='submit' data-testid='btn submit'>
-					Submit
+				<button
+					type='submit'
+					data-testid='btn submit'
+					className='blue-gradient'
+					style={{background:'none'}}
+				>
+					<TbBrandTelegram />
 				</button>
 			</div>
 		</form>

@@ -1,0 +1,36 @@
+header {
+	display: contents;
+	position: sticky;
+	height: 60px;
+	background: rgba(255, 255, 255, 0);
+	padding-bottom: 25px;
+}
+
+.nav__container {
+	display: flex;
+	align-items: center;
+	padding: 10px 0px;
+	margin-top: 0px;
+	height: 100%;
+}
+
+.actions-buttons > button {
+	margin-left: 15px;
+}
+
+.inactive {
+	background: none;
+	color: #c1c1c1;
+	border: 1px #c1c1c1 solid;
+}
+
+.blue-gradient > span {
+	font-size: 14px;
+	padding-left: 4px;
+}
+.actions-buttons > .inactive:hover {
+	cursor: default;
+}
+.actions-buttons > .inactive:active {
+	transform: none;
+}
