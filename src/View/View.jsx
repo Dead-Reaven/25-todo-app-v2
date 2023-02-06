@@ -13,11 +13,13 @@ function View({ todos }) {
 	return (
 		<div className='App'>
 			<header>
-				<nav className='shadow'>
-					<div className='content nav__container '>
-						<ActionsButtons />
+				<div className='shadow'>
+					<div className='content nav__container  '>
+						<nav>
+							<ActionsButtons />
+						</nav>
 					</div>
-				</nav>
+				</div>
 			</header>
 
 			<main className='content'>

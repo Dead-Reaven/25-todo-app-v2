@@ -3,10 +3,9 @@ import controllerContext from '../../controller/context/controllerContext';
 import { BiArrowBack, BiCheck } from 'react-icons/bi';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { BsCheck2 } from 'react-icons/bs';
-// import {RxPencil1} from 'react-icons/rx' 
 
 const Todo = ({ todo }) => {
-	const { text, isCompleted, id, timeStart, timeEnd } = todo;
+	const { text, isCompleted, id } = todo;
 	const { deleteTodo, toggleIsCompleted } = useContext(controllerContext);
 
 	return (
@@ -15,7 +14,7 @@ const Todo = ({ todo }) => {
 			className={isCompleted ? 'completed-todo ' : 'todo shadow'}
 		>
 			<div className='todo__header'>
-				<h1 className='todo__header__title'>Title</h1>
+				<h1 className='todo__header__title'><p>{text}</p></h1>
 				<div className='todo__header__buttons'>
 					<button
 						data-testid={isCompleted ? 'btn-return-todo' : 'btn-complete-todo'}
@@ -38,11 +37,11 @@ const Todo = ({ todo }) => {
 				</div>
 			</div>
 
-			<div className='todo__body'>
+			{/* <div className='todo__body'>
 				<div className='todo__body__text'>
 					<p>{text}</p>
 				</div>
-			</div>
+			</div> */}
 
 			<div className='todo__footer'>
 				<span className='time-start'>

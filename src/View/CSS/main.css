@@ -1,11 +1,10 @@
-main{
-    height: 70vh;
+main {
+	height: 70vh;
 }
-
 
 /* todo list */
 .container__todos {
-    height: 100%;
+	height: 100%;
 	padding: 15px;
 	overflow-y: auto;
 }
@@ -116,4 +115,11 @@ main{
 
 .container__form {
 	width: 80%;
+}
+
+.empty-list {
+	height: 100%;
+	background: url('https://www.pngall.com/wp-content/uploads/2018/04/Goal-Download-PNG.png') no-repeat;
+	background-position: center;
+	background-size: contain;
 }
