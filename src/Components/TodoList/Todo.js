@@ -1,12 +1,9 @@
-import { useContext } from 'react';
-import controllerContext from '../../controller/context/controllerContext';
 import { BiArrowBack, BiCheck } from 'react-icons/bi';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { BsCheck2 } from 'react-icons/bs';
 
-const Todo = ({ todo }) => {
+const Todo = ({ todo, deleteTodo, toggleIsCompleted }) => {
 	const { text, isCompleted, id } = todo;
-	const { deleteTodo, toggleIsCompleted } = useContext(controllerContext);
 
 	return (
 		<div
