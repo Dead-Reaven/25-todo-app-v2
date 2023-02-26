@@ -5,9 +5,6 @@ import Form from './Components/Form/Form'
 import Todolist from './Components/TodoList/Todolist'
 
 import './css/App.css'
-import './css/header.css'
-import './css/main.css'
-import './css/footer.css'
 import './css/null.css'
 import './css/scroll-bar.css'
 
@@ -55,20 +52,16 @@ function App() {
 	return (
 		<div className='App'>
 			<header>
-				<div className='shadow'>
-					<div className='content nav__container  '>
-						<nav>
-							<ActionsButtons
-								clearTodos={() => setTodos([])}
-								clearCompleted={clearCompletedTodos}
-								countCompletedTodos={countCompletedTodos}
-							/>
-						</nav>
-					</div>
-				</div>
+				{/* {!!todos() && ( */}
+				<ActionsButtons
+					clearTodos={() => setTodos([])}
+					clearCompleted={clearCompletedTodos}
+					countCompletedTodos={countCompletedTodos}
+				/>
+				{/* )} */}
 			</header>
 
-			<main className='content'>
+			<main className='container'>
 				<Todolist
 					todos={todos}
 					deleteTodo={deleteTodo}
@@ -76,7 +69,7 @@ function App() {
 				/>
 			</main>
 
-			<footer className='content'>
+			<footer className='container'>
 				<Form onSubmitForm={pushTodo} />
 			</footer>
 		</div>

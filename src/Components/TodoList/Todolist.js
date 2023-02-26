@@ -1,4 +1,5 @@
-import Todo from './Todo'
+import Todo from './Todo/Todo'
+import './TodoList.css'
 
 const Todolist = ({ todos, deleteTodo, toggleIsCompleted }) => {
 	// if list is empty output massage

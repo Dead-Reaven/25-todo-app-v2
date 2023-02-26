@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { TbBrandTelegram } from 'react-icons/tb'
+import './Form.css'
 
 const Form = ({ onSubmitForm }) => {
 	const [todoText, setTodoText] = useState('')
-
+	
 	return (
 		<form
 			data-testid='form'

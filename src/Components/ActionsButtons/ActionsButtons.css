@@ -1,9 +1,4 @@
-header {
-	background: rgba(255, 255, 255, 0);
-	padding-bottom: 25px;
-}
-
-.nav__container {
+.header__container {
 	display: flex;
 	align-items: center;
 	height: 70px;
@@ -13,11 +8,6 @@ header {
 	margin-left: 15px;
 }
 
-.inactive {
-	background: none;
-	color: #c1c1c1;
-	border: 1px #c1c1c1 solid;
-}
 
 .blue-gradient > span {
 	font-size: 14px;

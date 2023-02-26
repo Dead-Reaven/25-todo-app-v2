@@ -1,11 +1,7 @@
-footer {
-	height: 30%;
-}
 .form {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 70%;
 }
 
 .input__container {

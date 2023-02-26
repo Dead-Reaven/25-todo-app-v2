@@ -1,14 +1,3 @@
-main {
-	height: 70vh;
-}
-
-/* todo list */
-.container__todos {
-	height: 100%;
-	padding: 15px;
-	overflow-y: auto;
-}
-
 /* todo card */
 .todo,
 .completed-todo {
@@ -65,7 +54,7 @@ main {
 	color: orange;
 }
 
-.todo__body {
+/* .todo__body {
 	align-items: center;
 	flex: auto 1 1;
 	flex-wrap: nowrap;
@@ -77,9 +66,8 @@ main {
 	height: 100%;
 	text-align: justify;
 	line-height: 16px;
-}
+} */
 
-/* footer */
 .todo__footer {
 	display: flex;
 	justify-content: space-between;
@@ -111,15 +99,4 @@ main {
 .date {
 	color: #339611;
 	font-weight: 700;
-}
-
-.container__form {
-	width: 80%;
-}
-
-.empty-list {
-	height: 100%;
-	background: url('https://www.pngall.com/wp-content/uploads/2018/04/Goal-Download-PNG.png') no-repeat;
-	background-position: center;
-	background-size: contain;
 }

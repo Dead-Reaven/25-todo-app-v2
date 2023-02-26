@@ -1,15 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans&family=Roboto:ital,wght@0,400;0,700;1,300&display=swap');
+
 html {
 	overflow: hidden;
 }
-
 .App {
 	width: 100vw;
 	height: 100vh;
 	font-family: 'Roboto', sans-serif;
 }
 
-.content {
+header {
+	height: 15vh;
+}
+
+main {
+	height: 70vh;
+}
+
+footer {
+	height: 15vh;
+	padding-top: 25px;
+}
+
+.container {
 	max-width: 80%;
 	margin: 0px auto;
 }
@@ -18,7 +31,8 @@ html {
 	-webkit-box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
 	box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
 }
-.blue-gradient {
+.blue-gradient,
+.inactive {
 	background: linear-gradient(to right, #196bca, #6433e0);
 	background-color: #196bca;
 	color: #fff;
@@ -32,7 +46,11 @@ html {
 	display: inline-flex;
 	transition: all 0.3s;
 }
-
+.inactive {
+	background: none;
+	color: #c1c1c1;
+	border: 1px #c1c1c1 solid;
+}
 .blue-gradient:hover {
 	content: 'clear';
 	background: linear-gradient(to right, #1866c0, #5f30d5);

@@ -1,6 +1,7 @@
 import { BiArrowBack, BiCheck } from 'react-icons/bi';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { BsCheck2 } from 'react-icons/bs';
+import './todo.css'
 
 const Todo = ({ todo, deleteTodo, toggleIsCompleted }) => {
 	const { text, isCompleted, id } = todo;

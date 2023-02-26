@@ -1,0 +1,12 @@
+.empty-list {
+	height: 100%;
+	background: url('https://www.pngall.com/wp-content/uploads/2018/04/Goal-Download-PNG.png')
+		no-repeat;
+	background-position: center;
+	background-size: contain;
+}
+.container__todos {
+	height: 100%;
+	padding: 15px;
+	overflow-y: auto;
+}
