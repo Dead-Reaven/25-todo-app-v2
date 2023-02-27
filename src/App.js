@@ -1,8 +1,9 @@
 import useTodos from './hooks/useTodos'
 import useTodosContext from './context/useTodosContext'
-import ActionsButtons from './Components/ActionsButtons/ActionsButtons'
-import Todolist from './Components/TodoList/Todolist'
-import Form from './Components/Form/Form'
+
+import ActionsButtons from './Components/ActionsButtons'
+import Todolist from './Components/TodoList/'
+import Form from './Components/Form'
 
 import './css/App.css'
 import './css/null.css'
@@ -14,10 +15,7 @@ function App() {
 	return (
 		<div className='App'>
 			<useTodosContext.Provider value={[todos, setTodos]}>
-				<header>{
-					todos.length ?
-					<ActionsButtons /> : null}
-				</header>
+				<header>{todos.length ? <ActionsButtons /> : null}</header>
 
 				<main className='container'>
 					<Todolist />
