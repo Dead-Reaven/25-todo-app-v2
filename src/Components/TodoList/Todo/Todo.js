@@ -1,10 +1,28 @@
-import { BiArrowBack, BiCheck } from 'react-icons/bi';
-import { RiDeleteBin6Line } from 'react-icons/ri';
-import { BsCheck2 } from 'react-icons/bs';
+import { useContext } from 'react'
+import useTodosContext from '../../../context/useTodosContext'
+
+import { BiArrowBack, BiCheck } from 'react-icons/bi'
+import { RiDeleteBin6Line } from 'react-icons/ri'
+import { BsCheck2 } from 'react-icons/bs'
 import './todo.css'
 
-const Todo = ({ todo, deleteTodo, toggleIsCompleted }) => {
-	const { text, isCompleted, id } = todo;
+const Todo = ({ todo }) => {
+	const { text, isCompleted, id } = todo
+	const [todos, setTodos] = useContext(useTodosContext)
+
+	const deleteTodo = (todoId) => {
+		const filteredTodos = [...todos.filter((todo) => todoId !== todo.id)]
+		setTodos(filteredTodos)
+	}
+	
+	const toggleIsCompleted = (todoId) => {
+		const changedTodo = todos.map((todo) => {
+			if (todo.id === todoId) return { ...todo, isCompleted: !todo.isCompleted }
+
+			return todo
+		})
+		setTodos(changedTodo)
+	}
 
 	return (
 		<div
@@ -12,7 +30,7 @@ const Todo = ({ todo, deleteTodo, toggleIsCompleted }) => {
 			className={isCompleted ? 'completed-todo ' : 'todo shadow'}
 		>
 			<div className='todo__header'>
-				<h1 className='todo__header__title'><p>{text}</p></h1>
+				<h1 className='todo__header__title'>{text}</h1>
 				<div className='todo__header__buttons'>
 					<button
 						data-testid={isCompleted ? 'btn-return-todo' : 'btn-complete-todo'}
@@ -35,12 +53,6 @@ const Todo = ({ todo, deleteTodo, toggleIsCompleted }) => {
 				</div>
 			</div>
 
-			{/* <div className='todo__body'>
-				<div className='todo__body__text'>
-					<p>{text}</p>
-				</div>
-			</div> */}
-
 			<div className='todo__footer'>
 				<span className='time-start'>
 					started at {new Date().toDateString()}
@@ -53,12 +65,10 @@ const Todo = ({ todo, deleteTodo, toggleIsCompleted }) => {
 							<span className='date'> {new Date().toDateString()}</span>
 						</span>
 					</div>
-				) : (
-					<></>
-				)}
+				) : null}
 			</div>
 		</div>
-	);
-};
+	)
+}
 
-export default Todo;
+export default Todo

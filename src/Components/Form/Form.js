@@ -1,10 +1,22 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import useTodosContext from '../../context/useTodosContext'
+import { v4 as uuidv4 } from 'uuid'
 import { TbBrandTelegram } from 'react-icons/tb'
 import './Form.css'
 
-const Form = ({ onSubmitForm }) => {
+const Form = () => {
 	const [todoText, setTodoText] = useState('')
-	
+	const [todos, setTodos] = useContext(useTodosContext)
+
+	const addTodo = (text) => {
+		const newTodo = {
+			text,
+			isCompleted: false,
+			id: uuidv4(),
+		}
+		setTodos([...todos, newTodo])
+	}
+
 	return (
 		<form
 			data-testid='form'
@@ -12,8 +24,8 @@ const Form = ({ onSubmitForm }) => {
 			onSubmit={(event) => {
 				event.preventDefault()
 
-				if (!!todoText) {
-					onSubmitForm(todoText)
+				if (todoText.length) {
+					addTodo(todoText)
 					setTodoText('')
 				}
 			}}
